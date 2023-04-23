@@ -2,34 +2,119 @@ body {
   background: url("C:/HTML_CSS/xo/src/img/Sky.jpg");
   background-size: cover;
 }
+
+/* Main CSS */
+
 #main {
-  width: 300px;
-  margin-left: auto;
-  margin-right: auto;
   margin-top: 5%;
+  margin-left: 25%;
+  margin-right: 25%;
+  height: 500px;
+  /* background-color: rgb(87, 56, 172); */
 }
-.selectButton {
-  background: rgb(5, 236, 36);
-}
-.btn {
-  background: rgb(207, 18, 18);
-}
-.btn,
-#oneXX,
-#oneOO,
-#twoXX,
-#twoOO :hover {
+.btn:hover {
   cursor: pointer;
 }
-.play {
+
+/* Page Users */
+
+.formMain {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
 }
-.userName,
-.newGame {
+.formInput input {
+  margin: 5px;
+}
+.inputStart {
+  position: relative;
+  left: 25%;
+}
+#selectButton {
+  background: rgb(5, 236, 36);
+}
+
+/* Page Play */
+
+/* Page Play  HEADER */
+
+.playHeader {
+  display: flex;
+  justify-content: space-between;
+  height: 50px;
+}
+.userName {
+  width: 250px;
+  display: flex;
+  justify-content: left;
+}
+.nameRight {
+  justify-content: right;
+}
+#btnLeft,
+#btnRight {
+  margin: 0 10px;
+}
+
+/* Page Play PlayPlace */
+
+.playPlace {
+  height: 400px;
+  width: 400px;
   margin-left: auto;
   margin-right: auto;
+  display: grid;
+  grid-template-columns: auto auto auto;
 }
-.newGame {
-  margin: 0 100px 0 100px;
+
+.playPlace div {
+  border: 2px solid rgb(192, 192, 201);
+  border-radius: 15px;
+  margin: 2px;
+  text-align: center;
+  padding: 10px;
+  background: rgb(122, 122, 177);
+  font-size: 5em;
+  width: 100px;
+  height: 100px;
+}
+.playPlace div:hover {
+  cursor: pointer;
+}
+.selButton {
+  background: rgb(5, 236, 36);
+}
+
+/* Page Play Futer */
+
+.futer {
+  display: flex;
+  justify-content: space-between;
+  height: 100px;
+  margin-top: 25px;
+}
+
+.futerMain {
+  display: flex;
+  justify-content: space-between;
+}
+.futerName {
+  margin: 22px;
+}
+.futerName div {
+  margin-bottom: 10px;
+}
+.futerVictory div {
+  margin-bottom: 6px;
+  text-align: center;
+}
+.futerExit {
+  align-self: flex-end;
+  margin: 10px;
+}
+.futerExit button {
+  height: 40px;
+  width: 70px;
+}
+.futer button:hover {
+  cursor: pointer;
 }

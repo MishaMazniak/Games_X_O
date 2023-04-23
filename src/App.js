@@ -3,38 +3,28 @@ import Play from "./components/play";
 import Users from "./components/users";
 
 class App extends React.Component {
+  AllDate = {};
   constructor(props) {
     super(props);
     this.state = {
-      nameOne: "",
-      nameTwo: "",
-      selectOneX: false,
-      selectOneO: false,
-      selectTwoX: false,
-      selectTwoO: false,
-      selectPage: true,
+      users: { selectPage: true, selectOneX: "", nameOne: "", nameTwo: "" },
     };
     this.playShou = this.playShou.bind(this);
   }
   render() {
+    this.AllDate = this.state.users;
     return (
       <div>
-        {this.state.selectPage ? (
+        {this.state.users.selectPage ? (
           <Users playShou={this.playShou} />
         ) : (
-          <Play infoUsers={this.state} />
+          <Play infoUsers={this.AllDate} />
         )}
       </div>
     );
   }
   playShou = (date) => {
-    this.setState({ nameOne: date.nameOne });
-    this.setState({ nameTwo: date.nameTwo });
-    this.setState({ selectOneX: date.selectOneX });
-    this.setState({ selectOneO: date.selectOneO });
-    this.setState({ selectTwoX: date.selectTwoX });
-    this.setState({ selectTwoO: date.selectTwoO });
-    this.setState({ selectPage: date.selectPage });
+    this.setState({ users: date });
   };
 }
 
