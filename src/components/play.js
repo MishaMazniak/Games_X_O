@@ -2,6 +2,29 @@ import React from "react";
 import GameBoard from "./gameBoard";
 
 class Play extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      cssOne: "",
+      cssTwo: "",
+      step: 1,
+
+      oneOne: "",
+      oneTwo: "",
+      oneThree: "",
+
+      twoOne: "",
+      twoTwo: "",
+      twoThree: "",
+
+      threeOne: "",
+      threeTwo: "",
+      threeThree: "",
+    };
+    this.selectUsers = this.selectUsers.bind(this);
+    this.saveInfo = this.saveInfo.bind(this);
+    this.newGame = this.newGame.bind(this);
+  }
   dateProps = {
     nameOne: "",
     nameTwo: "",
@@ -9,12 +32,9 @@ class Play extends React.Component {
     selectOne: "",
     selectTwo: "",
     selectOneX: "",
-
-    cssOne: "",
-    cssTwo: "",
-
+  };
+  shiftDate = {
     step: 1,
-
     oneOne: "",
     oneTwo: "",
     oneThree: "",
@@ -27,6 +47,7 @@ class Play extends React.Component {
     threeTwo: "",
     threeThree: "",
   };
+
   render() {
     this.selectUsers();
     return (
@@ -35,17 +56,19 @@ class Play extends React.Component {
           <div className="userName nameLeft">
             <div>{this.dateProps.nameOne}</div>
             <div>
-              <button id="btnLeft" className={this.dateProps.cssOne}>
+              <button id="btnLeft" className={this.state.cssOne}>
                 {this.dateProps.selectOne}
               </button>
             </div>
           </div>
           <div>
-            <button className="newGame btn">New Games</button>
+            <button className="newGame btn" onClick={this.newGame}>
+              New Games
+            </button>
           </div>
           <div className="userName nameRight">
             <div>
-              <button id="btnRight" className={this.dateProps.cssTwo}>
+              <button id="btnRight" className={this.state.cssTwo}>
                 {this.dateProps.selectTwo}
               </button>
             </div>
@@ -53,7 +76,11 @@ class Play extends React.Component {
           </div>
         </div>
         <div>
-          <GameBoard saveInfo={this.saveInfo} />
+          <GameBoard
+            saveInfo={this.saveInfo}
+            shiftDate={this.shiftDate}
+            sts={this.state}
+          />
         </div>
         <div className="futer">
           <div className="futerMain">
@@ -67,7 +94,7 @@ class Play extends React.Component {
                 <div>0</div>
                 <div>0</div>
               </div>
-              <button onClick={this.resetBorder}>RESET</button>
+              <button onClick={this.resetVictory}>RESET</button>
             </div>
           </div>
           <div className="futerExit">
@@ -85,17 +112,78 @@ class Play extends React.Component {
     if (this.dateProps.selectOneX === "X") {
       this.dateProps.selectOne = "X";
       this.dateProps.selectTwo = "O";
-      this.dateProps.cssOne = "selButton";
-      this.dateProps.cssTwo = "empty";
+      if (this.shiftDate.step % 2 !== 0) {
+        this.state.cssOne = "selButton";
+        this.state.cssTwo = "empty";
+      } else {
+        this.state.cssOne = "empty";
+        this.state.cssTwo = "selButton";
+      }
     } else if (this.dateProps.selectOneX === "O") {
       this.dateProps.selectOne = "O";
       this.dateProps.selectTwo = "X";
-      this.dateProps.cssOne = "empty";
-      this.dateProps.cssTwo = "selButton";
+      if (this.shiftDate.step % 2 !== 0) {
+        this.state.cssOne = "empty";
+        this.state.cssTwo = "selButton";
+      }
+      if (this.shiftDate.step % 2 === 0) {
+        this.state.cssOne = "selButton";
+        this.state.cssTwo = "empty";
+      }
     }
   };
 
-  resetBorder = () => {};
-  saveInfo = (info) => {};
+  saveInfo = (info) => {
+    this.shiftDate = info;
+
+    this.setState({ step: info.step });
+
+    this.setState({ oneOne: info.oneOne });
+    this.setState({ oneTwo: info.oneTwo });
+    this.setState({ oneThree: info.oneThree });
+
+    this.setState({ twoOne: info.twoOne });
+    this.setState({ twoTwo: info.twoTwo });
+    this.setState({ twoThree: info.twoThree });
+
+    this.setState({ threeOne: info.threeOne });
+    this.setState({ threeTwo: info.threeTwo });
+    this.setState({ threeThree: info.threeThree });
+
+    this.selectUsers();
+  };
+  newGame = () => {
+    this.shiftDate = {
+      step: 1,
+      oneOne: "",
+      oneTwo: "",
+      oneThree: "",
+
+      twoOne: "",
+      twoTwo: "",
+      twoThree: "",
+
+      threeOne: "",
+      threeTwo: "",
+      threeThree: "",
+    };
+    this.setState({ step: 1 });
+
+    this.setState({ oneOne: "" });
+    this.setState({ oneTwo: "" });
+    this.setState({ oneThree: "" });
+
+    this.setState({ twoOne: "" });
+    this.setState({ twoTwo: "" });
+    this.setState({ twoThree: "" });
+
+    this.setState({ threeOne: "" });
+    this.setState({ threeTwo: "" });
+    this.setState({ threeThree: "" });
+  };
+  resetVictory = () => {
+    this.setState({ oneOne: "123" });
+    console.log(this.state.oneOne);
+  };
 }
 export default Play;
