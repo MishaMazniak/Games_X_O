@@ -2,140 +2,126 @@ import React from "react";
 
 class GameBoard extends React.Component {
   returnInfo = this.props.shiftDate;
-  goPlay = {
-    step: 1,
-    oneOne: "",
-    oneTwo: "",
-    oneThree: "",
 
-    twoOne: "",
-    twoTwo: "",
-    twoThree: "",
+  constructor(props) {
+    super(props);
+    this.state = {
+      step: 1,
+      oneOne: "",
+      oneTwo: "",
+      oneThree: "",
 
-    threeOne: "",
-    threeTwo: "",
-    threeThree: "",
-  };
-  sts = this.props.sts;
+      twoOne: "",
+      twoTwo: "",
+      twoThree: "",
+
+      threeOne: "",
+      threeTwo: "",
+      threeThree: "",
+    };
+    this.logicPro = this.logicPro.bind(this);
+  }
+
   render() {
     return (
       <div className="playPlace">
         <div id="oneOne" onClick={this.logicPro}>
-          {this.sts.oneOne}
+          {this.state.oneOne}
         </div>
         <div id="oneTwo" onClick={this.logicPro}>
-          {this.sts.oneTwo}
+          {this.state.oneTwo}
         </div>
         <div id="oneThree" onClick={this.logicPro}>
-          {this.sts.oneThree}
+          {this.state.oneThree}
         </div>
 
         <div id="twoOne" onClick={this.logicPro}>
-          {this.sts.twoOne}
+          {this.state.twoOne}
         </div>
         <div id="twoTwo" onClick={this.logicPro}>
-          {this.sts.twoTwo}
+          {this.state.twoTwo}
         </div>
         <div id="twoThree" onClick={this.logicPro}>
-          {this.sts.twoThree}
+          {this.state.twoThree}
         </div>
 
         <div id="threeOne" onClick={this.logicPro}>
-          {this.sts.threeOne}
+          {this.state.threeOne}
         </div>
         <div id="threeTwo" onClick={this.logicPro}>
-          {this.sts.threeTwo}
+          {this.state.threeTwo}
         </div>
         <div id="threeThree" onClick={this.logicPro}>
-          {this.sts.threeThree}
+          {this.state.threeThree}
         </div>
       </div>
     );
   }
   logicPro = (e) => {
     if (e.target.id === "oneOne" && this.returnInfo.oneOne === "") {
-      if (this.returnInfo.step % 2 === 0) {
-        this.goPlay.oneOne = "0";
-        this.goPlay.step += 1;
+      if (this.state.step % 2 === 0) {
+        this.setState({ oneOne: "0" });
       } else {
-        this.goPlay.oneOne = "X";
-        this.goPlay.step += 1;
+        this.setState({ oneOne: "X" });
       }
     }
     if (e.target.id === "oneTwo" && this.returnInfo.oneTwo === "") {
-      if (this.returnInfo.step % 2 === 0) {
-        this.goPlay.oneTwo = "0";
-        this.goPlay.step += 1;
+      if (this.state.step % 2 === 0) {
+        this.setState({ oneTwo: "0" });
       } else {
-        this.goPlay.oneTwo = "X";
-        this.goPlay.step += 1;
+        this.setState({ oneTwo: "X" });
       }
     }
     if (e.target.id === "oneThree" && this.returnInfo.oneThree === "") {
-      if (this.returnInfo.step % 2 === 0) {
-        this.goPlay.oneThree = "0";
-        this.goPlay.step += 1;
+      if (this.state.step % 2 === 0) {
+        this.setState({ oneThree: "0" });
       } else {
-        this.goPlay.oneThree = "X";
-        this.goPlay.step += 1;
+        this.setState({ oneThree: "X" });
       }
     }
     if (e.target.id === "twoOne" && this.returnInfo.twoOne === "") {
-      if (this.returnInfo.step % 2 === 0) {
-        this.goPlay.twoOne = "0";
-        this.goPlay.step += 1;
+      if (this.state.step % 2 === 0) {
+        this.setState({ twoOne: "0" });
       } else {
-        this.goPlay.twoOne = "X";
-        this.goPlay.step += 1;
+        this.setState({ twoOne: "X" });
       }
     }
     if (e.target.id === "twoTwo" && this.returnInfo.twoTwo === "") {
-      if (this.returnInfo.step % 2 === 0) {
-        this.goPlay.twoTwo = "0";
-        this.goPlay.step += 1;
+      if (this.state.step % 2 === 0) {
+        this.setState({ twoTwo: "0" });
       } else {
-        this.goPlay.twoTwo = "X";
-        this.goPlay.step += 1;
+        this.setState({ twoTwo: "X" });
       }
     }
     if (e.target.id === "twoThree" && this.returnInfo.twoThree === "") {
-      if (this.returnInfo.step % 2 === 0) {
-        this.goPlay.twoThree = "0";
-        this.goPlay.step += 1;
+      if (this.state.step % 2 === 0) {
+        this.setState({ twoThree: "0" });
       } else {
-        this.goPlay.twoThree = "X";
-        this.goPlay.step += 1;
+        this.setState({ twoThree: "X" });
       }
     }
     if (e.target.id === "threeOne" && this.returnInfo.threeOne === "") {
-      if (this.returnInfo.step % 2 === 0) {
-        this.goPlay.threeOne = "0";
-        this.goPlay.step += 1;
+      if (this.state.step % 2 === 0) {
+        this.setState({ threeOne: "0" });
       } else {
-        this.goPlay.threeOne = "X";
-        this.goPlay.step += 1;
+        this.setState({ threeOne: "X" });
       }
     }
     if (e.target.id === "threeTwo" && this.returnInfo.threeTwo === "") {
-      if (this.returnInfo.step % 2 === 0) {
-        this.goPlay.threeTwo = "0";
-        this.goPlay.step += 1;
+      if (this.state.step % 2 === 0) {
+        this.setState({ threeTwo: "0" });
       } else {
-        this.goPlay.threeTwo = "X";
-        this.goPlay.step += 1;
+        this.setState({ threeTwo: "X" });
       }
     }
     if (e.target.id === "threeThree" && this.returnInfo.threeThree === "") {
-      if (this.returnInfo.step % 2 === 0) {
-        this.goPlay.threeThree = "0";
-        this.goPlay.step += 1;
+      if (this.state.step % 2 === 0) {
+        this.setState({ threeThree: "0" });
       } else {
-        this.goPlay.threeThree = "X";
-        this.goPlay.step += 1;
+        this.setState({ threeThree: "X" });
       }
     }
-
-    this.props.saveInfo(this.goPlay);
+    this.setState({ step: this.state.step + 1 });
   };
 }
 export default GameBoard;
