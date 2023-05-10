@@ -2,6 +2,14 @@ import React from "react";
 import GameBoard from "./gameBoard";
 
 class Play extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      cssOne: "",
+      cssTwo: "",
+    };
+  }
+
   //  dateProps  -  Імена іграків та вибрані ними знаки (Х/О)
 
   dateProps = {
@@ -11,6 +19,9 @@ class Play extends React.Component {
 
     selectOne: "",
     selectTwo: "",
+
+    cssOne: "",
+    cssTwo: "",
   };
   shiftDate = {
     step: 1,
@@ -35,7 +46,7 @@ class Play extends React.Component {
           <div className="userName nameLeft">
             <div>{this.dateProps.nameOne}</div>
             <div>
-              <button id="btnLeft" className={this.shiftDate.cssOne}>
+              <button id="btnLeft" className={this.state.cssOne}>
                 {this.dateProps.selectOne}
               </button>
             </div>
@@ -47,7 +58,7 @@ class Play extends React.Component {
           </div>
           <div className="userName nameRight">
             <div>
-              <button id="btnRight" className={this.shiftDate.cssTwo}>
+              <button id="btnRight" className={this.state.cssTwo}>
                 {this.dateProps.selectTwo}
               </button>
             </div>
@@ -88,28 +99,40 @@ class Play extends React.Component {
       this.dateProps.selectOne = "X";
       this.dateProps.selectTwo = "O";
       if (this.shiftDate.step % 2 !== 0) {
-        this.shiftDate.cssOne = "selButton";
-        this.shiftDate.cssTwo = "empty";
+        this.dateProps.cssOne = "selButton";
+        this.dateProps.cssTwo = "empty";
       } else {
-        this.shiftDate.cssOne = "empty";
-        this.shiftDate.cssTwo = "selButton";
+        this.dateProps.cssOne = "empty";
+        this.dateProps.cssTwo = "selButton";
       }
     } else if (this.dateProps.selectOneX === "O") {
       this.dateProps.selectOne = "O";
       this.dateProps.selectTwo = "X";
       if (this.shiftDate.step % 2 !== 0) {
-        this.shiftDate.cssOne = "empty";
-        this.shiftDate.cssTwo = "selButton";
+        this.dateProps.cssOne = "empty";
+        this.dateProps.cssTwo = "selButton";
       }
       if (this.shiftDate.step % 2 === 0) {
-        this.shiftDate.cssOne = "selButton";
-        this.shiftDate.cssTwo = "empty";
+        this.dateProps.cssOne = "selButton";
+        this.dateProps.cssTwo = "empty";
       }
     }
   };
 
   saveInfo = (info) => {
-    this.shiftDate = info;
+    this.shiftDate.step = info.step;
+
+    this.shiftDate.oneOne = info.oneOne;
+    this.shiftDate.oneTwo = info.oneTwo;
+    this.shiftDate.oneThree = info.oneThree;
+
+    this.shiftDate.twoOne = info.twoOne;
+    this.shiftDate.twoTwo = info.twoTwo;
+    this.shiftDate.twoThree = info.twoThree;
+
+    this.shiftDate.threeOne = info.threeOne;
+    this.shiftDate.threeTwo = info.threeTwo;
+    this.shiftDate.threeThree = info.threeThree;
 
     this.selectUsers();
   };
