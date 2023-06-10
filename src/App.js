@@ -1,31 +1,40 @@
-import React from "react";
-import Play from "./components/play";
-import Users from "./components/users";
+import React from "react"
+import Play from "./components/play"
+import Users from "./components/users"
 
 class App extends React.Component {
-  AllDate = {};
+  AllDate = {}
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      users: { selectPage: true, selectOneX: "", nameOne: "", nameTwo: "" },
-    };
-    this.playShou = this.playShou.bind(this);
+      users: {
+        selectPage: true,
+        selectOneX: "",
+        nameOne: "",
+        nameTwo: "",
+      },
+    }
+    this.showBoard = this.showBoard.bind(this)
+    this.showNewUser = this.showNewUser.bind(this)
   }
   render() {
-    this.AllDate = this.state.users;
+    this.AllDate = this.state.users
     return (
       <div>
         {this.state.users.selectPage ? (
-          <Users playShou={this.playShou} />
+          <Users showBoard={this.showBoard} />
         ) : (
-          <Play infoUsers={this.AllDate} />
+          <Play infoUsers={this.AllDate} showNewUser={this.showNewUser} />
         )}
       </div>
-    );
+    )
   }
-  playShou = (date) => {
-    this.setState({ users: date });
-  };
+  showBoard = (date) => {
+    this.setState({users: date})
+  }
+  showNewUser = (a) => {
+    this.setState({users: a})
+  }
 }
 
-export default App;
+export default App

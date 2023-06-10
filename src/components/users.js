@@ -79,6 +79,9 @@ class Users extends React.Component {
       </div>
     );
   }
+
+  /* _________ Check data/send data _____________________________________________________________ */
+
   shouPlay = () => {
     this.usersAdd = {
       nameOne: this.state.nameOne,
@@ -90,9 +93,12 @@ class Users extends React.Component {
     this.state.nameTwo !== "" &&
     this.state.selectOneX !== "" &&
     this.state.selectOneO !== ""
-      ? this.props.playShou(this.usersAdd)
+      ? this.props.showBoard(this.usersAdd)
       : console.log(alert("Fill in the date"));
   };
+
+  /* _________ Select a symbol _____________________________________________________________ */
+
   selectSymbol = (el) => {
     if (el.target.name === "oneX" || el.target.name === "twoO") {
       this.setState({ cssOneX: "selectButton" });
