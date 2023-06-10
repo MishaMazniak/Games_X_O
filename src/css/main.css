@@ -71,7 +71,6 @@ body {
   margin: 2px;
   text-align: center;
   padding: 10px;
-  background: rgb(122, 122, 177);
   font-size: 5em;
   width: 100px;
   height: 100px;
@@ -82,38 +81,45 @@ body {
 .selButton {
   background: rgb(5, 236, 36);
 }
+.BackCss {
+  background: rgb(122, 122, 177);
+}
+.BackVictiryCss {
+  background: green;
+  border: 2px solid green !important;
+}
 
 /* Page Play Futer */
 
-.futer {
+.footer {
   display: flex;
   justify-content: space-between;
   height: 100px;
   margin-top: 25px;
 }
 
-.futerMain {
+.footerMain {
   display: flex;
   justify-content: space-between;
 }
-.futerName {
+.footerName {
   margin: 22px;
 }
-.futerName div {
+.footerName div {
   margin-bottom: 10px;
 }
-.futerVictory div {
+.footerVictory div {
   margin-bottom: 6px;
   text-align: center;
 }
-.futerExit {
+.footerExit {
   align-self: flex-end;
   margin: 10px;
 }
-.futerExit button {
+.footerExit button {
   height: 40px;
   width: 70px;
 }
-.futer button:hover {
+.footer button:hover {
   cursor: pointer;
 }
